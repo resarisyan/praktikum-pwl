@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\BookshelfController;
 use App\Http\Controllers\ProfileController;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +24,15 @@ Route::middleware('auth')->group(function () {
     //     return view('welcome');
     // })->middleware(['role:mahasiswa']);
     Route::view('/roles', 'role')->name('role')->middleware(['role:mahasiswa']);
+    Route::group(
+        [
+            'middleware' => ['role:admin'],
+            'prefix' => 'bookshelf'
+        ],
+        function () {
+            Route::get('/', [BookshelfController::class, 'index'])->name('bookshelf.index');
+        }
+    );
 });
 
 Route::get('/dashboard', function () {

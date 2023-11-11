@@ -17,7 +17,7 @@
                             </tr>
                         </x-slot>
                         @php $num=1; @endphp
-                        @foreach($bookshelfs as $bookshelf)
+                        @foreach($bookshelves as $bookshelf)
                         <tr>
                             <td>{{ $num++ }} </td>
                             <td>{{ $bookshelf->code }}</td>

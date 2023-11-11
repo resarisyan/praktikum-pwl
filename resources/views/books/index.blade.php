@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Bookshelf') }}
+            {{ __('Books') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -23,11 +23,11 @@
                                 <th>Cover</th>
                                 <th>Kuantitas</th>
                                 <th>Kode Rak</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </x-slot>
                         @php $num=1; @endphp
-                        @foreach($bookshelfs as $book)
+                        @foreach($books as $book)
                         <tr>
                             <td>{{ $num++ }} </td>
                             <td>{{ $book->title }}</td>
@@ -44,12 +44,13 @@
                                 <x-primary-button tag="a" href="{{route('book.edit', $book->id)}}">Edit
                                 </x-primary-button>
                             </td> --}}
-                            <x-danger-button x-data=""
+                            {{-- <x-danger-button x-data=""
                                 x-on:click.prevent="$dispatch('open-modal', 'confirm-book-deletion')"
                                 x-on:click="$dispatch('set-action', '{{route('book.destroy', $book->id) }}')">{{
-                                __('Delete') }}</x-danger-button>
+                                __('Delete') }}</x-danger-button> --}}
+                            {{--
                         </tr>
-                        @endforeach
+                        @endforeach --}}
                     </x-table>
 
                     <x-modal name="confirm-book-deletion" focusable maxWidth="xl">
