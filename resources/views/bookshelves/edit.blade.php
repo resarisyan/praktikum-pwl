@@ -9,9 +9,9 @@
             <div class="bg-white dark:bg-gray-800 overflowhidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray100">
                     <!-- CONTENT HERE -->
-                    <form method="post" action="{{ route('bookshelf.update', $book->id) }}" class="mt-6 space-y-6">
+                    <form method="post" action="{{ route('bookshelf.update', $bookshelf->id) }}" class="mt-6 space-y-6">
                         @csrf
-                        @method('PATCH')
+                        @method('PUT')
                         <div class="max-w-xl">
                             <x-input-label for="code" value="Code Buku" />
                             <x-text-input id="code" type="text" name="code" class="mt-1 block w-full"

@@ -27,10 +27,15 @@ Route::middleware('auth')->group(function () {
     Route::group(
         [
             'middleware' => ['role:admin'],
-            'prefix' => 'bookshelf'
+            'prefix' => 'bookshelf',
+            'as' => 'bookshelf.'
         ],
         function () {
-            Route::get('/', [BookshelfController::class, 'index'])->name('bookshelf.index');
+            Route::get('/', [BookshelfController::class, 'index'])->name('index');
+            Route::get('/create', [BookshelfController::class, 'create'])->name('create');
+            Route::post('/', [BookshelfController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [BookshelfController::class, 'edit'])->name('edit');
+            // Route::put('/update/{id}', [BookshelfController::class, 'update'])->name('update');
         }
     );
 });
