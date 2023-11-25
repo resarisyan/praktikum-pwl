@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bookshelf;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class BookshelfController extends Controller
@@ -64,5 +65,11 @@ class BookshelfController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('bookshelf')->with($notification);
+    }
+
+    public function print(){
+        $data['bookshelves'] = Bookshelf::all();
+        $pdf = Pdf::loadView('bookshelves.print', $data);
+        return $pdf->download('bookshelves.pdf');
     }
 }
